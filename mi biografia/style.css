@@ -1,0 +1,506 @@
+/* ==========================================================================
+   TIPOGRAFÍAS Y VARIABLES DE DISEÑO
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --fondo-negro: #000000;
+    --fondo-bloque: #0a0a0a;
+    --texto-claro: #ffffff;
+    --texto-gris: #a0a0a0;
+    --texto-gris-oscuro: #6a6a6a;
+    --lineas-division: #1a1a1a;
+    --fuente-titulos: 'Outfit', sans-serif;
+    --fuente-cuerpo: 'Inter', sans-serif;
+    --transicion-suave: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ==========================================================================
+   RESET Y ESTILOS BASE CON FADE-IN DE CARGA
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--fondo-negro);
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--fondo-negro);
+    color: var(--texto-claro);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Transición de desvanecimiento al entrar a la página */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+body.page-loaded {
+    opacity: 1;
+}
+
+.container {
+    width: 85%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   HEADER - MINIMALISTA TRANSPARENTE
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Soporte optimizado para Logo Pixel Art */
+.img-logo {
+    height: 36px;
+    width: auto;
+    opacity: 0.95;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.img-logo:hover {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.brand-name {
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 2.5px;
+    color: var(--texto-claro);
+    text-transform: uppercase;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--texto-gris);
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--texto-claro);
+    transition: width 0.4s ease;
+}
+
+.main-nav a:hover {
+    color: var(--texto-claro);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   HERO SECTION - PARALLAX Y FADE-OUT
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.7)), 
+                      url('Imágenes/fondoprincipal.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+
+    /* Transición fluida para la salida */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    will-change: opacity, transform;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(100, 100, 150, 0.1), transparent 50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text {
+    text-align: center;
+    max-width: 700px;
+}
+
+.hero-text h1 {
+    font-family: var(--fuente-titulos);
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: var(--texto-claro);
+}
+
+.hero-text .subtitle {
+    font-size: 1.1rem;
+    color: var(--texto-gris);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--fondo-negro);
+    background-color: var(--texto-claro);
+    padding: 0.85rem 2.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid var(--texto-claro);
+    transition: var(--transicion-suave);
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--texto-claro);
+    transform: translateY(-2px);
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   SECCIONES COMUNES Y BIOGRAFÍA
+   ========================================================================== */
+.bio-section, .contact-section {
+    position: relative;
+    z-index: 5;
+    background-color: var(--fondo-negro);
+    padding: 120px 0;
+    border-top: 1px solid var(--lineas-division);
+}
+
+.section-header {
+    margin-bottom: 80px;
+}
+
+.section-header h2 {
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.separator {
+    width: 40px;
+    height: 1px;
+    border: none;
+    background-color: var(--texto-claro);
+    margin: 18px auto 0;
+}
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.bio-photo figure {
+    text-align: center;
+}
+
+.bio-photo figcaption {
+    margin-top: 10px;
+    color: var(--texto-gris-oscuro);
+    font-size: 0.85rem;
+}
+
+.img-profile {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid var(--lineas-division);
+    filter: grayscale(100%);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+}
+
+.img-profile:hover {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+}
+
+.bio-data h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    color: var(--texto-claro);
+}
+
+.bio-data h3:first-child {
+    margin-top: 0;
+}
+
+.bio-data p {
+    color: var(--texto-gris);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.personal-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 25px;
+    border-top: 1px solid var(--lineas-division);
+    padding-top: 20px;
+}
+
+.personal-info dt {
+    font-weight: 600;
+    color: var(--texto-claro);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.personal-info dd {
+    color: var(--texto-gris);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   SECCIÓN CONTACTO
+   ========================================================================== */
+.contact-content {
+    text-align: center;
+}
+
+.contact-content p {
+    color: var(--texto-gris);
+    font-size: 1rem;
+    margin-bottom: 45px;
+    letter-spacing: 0.5px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--texto-claro);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border: 1px solid var(--lineas-division);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--texto-claro);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.social-link:hover {
+    color: var(--fondo-negro);
+    border-color: var(--texto-claro);
+}
+
+.social-link:hover::before {
+    width: 100%;
+}
+
+/* ==========================================================================
+   FOOTER Y ACCESIBILIDAD
+   ========================================================================== */
+.main-footer {
+    position: relative;
+    z-index: 5;
+    background-color: #050505;
+    padding: 60px 0;
+    border-top: 1px solid var(--lineas-division);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.footer-content p {
+    color: var(--texto-gris);
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+    margin: 2px 0;
+}
+
+.footer-content .developer {
+    color: var(--texto-claro);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   ANIMACIONES Y RESPONSIVE
+   ========================================================================== */
+@keyframes fadeInScroll {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[data-scroll] {
+    opacity: 0;
+}
+
+@media (max-width: 900px) {
+    .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-container {
+        padding: 0.8rem 3%;
+    }
+
+    .main-nav ul {
+        gap: 20px;
+    }
+
+    .hero-section {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .main-nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    .social-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+}
