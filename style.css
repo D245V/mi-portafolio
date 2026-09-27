@@ -356,8 +356,8 @@ body.page-loaded {
 .project-card {
     background-color: var(--fondo-bloque);
     border: 1px solid var(--lineas-division);
-    padding: 35px 30px;
     border-radius: 4px;
+    overflow: hidden;
     transition: transform 0.4s ease, border-color 0.4s ease;
     display: flex;
     flex-direction: column;
@@ -367,6 +367,33 @@ body.page-loaded {
 .project-card:hover {
     transform: translateY(-6px);
     border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ESTILOS DE LA IMAGEN DEL PROYECTO */
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--lineas-division);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(30%);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.proyect-info {
+    padding: 30px 25px;
 }
 
 .project-tag {
