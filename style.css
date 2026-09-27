@@ -337,6 +337,96 @@ body.page-loaded {
 }
 
 /* ==========================================================================
+   SECCIÓN PROYECTOS
+   ========================================================================== */
+.projects-section {
+    position: relative;
+    z-index: 5;
+    background-color: var(--fondo-negro);
+    padding: 120px 0;
+    border-top: 1px solid var(--lineas-division);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--fondo-bloque);
+    border: 1px solid var(--lineas-division);
+    padding: 35px 30px;
+    border-radius: 4px;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.project-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--texto-gris-oscuro);
+    font-weight: 600;
+}
+
+.project-title {
+    font-family: var(--fuente-titulos);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--texto-claro);
+    margin: 10px 0 15px 0;
+}
+
+.project-description {
+    color: var(--texto-gris);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-techs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.project-techs span {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background-color: #141414;
+    border: 1px solid var(--lineas-division);
+    color: var(--texto-gris);
+    border-radius: 2px;
+}
+
+.btn-project {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--texto-claro);
+    border: 1px solid var(--texto-claro);
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-project:hover {
+    background-color: var(--texto-claro);
+    color: var(--fondo-negro);
+}
+
+/* ==========================================================================
    SECCIÓN CONTACTO
    ========================================================================== */
 .contact-content {
